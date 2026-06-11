@@ -4,7 +4,6 @@ import { View, Text,StyleSheet, FlatList  } from 'react-native';
 import Post from "../componentes/Post";
 import { db } from "../Firebase/config";
 
-const Stack = createNativeStackNavigator();
 
 function Home(props){
 
@@ -33,8 +32,7 @@ function Home(props){
                  keyExtractor={(item) => item.id.toString()}
                  renderItem = {({ item }) => <Post post={item} navigation={props.navigation} />}>
 
-                </FlatList>
-                
+                </FlatList> 
 
             </View>
         </View> 
