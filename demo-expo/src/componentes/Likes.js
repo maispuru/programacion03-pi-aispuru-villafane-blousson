@@ -6,7 +6,7 @@ import firebase from 'firebase';
 
 function Likes(props) {
     const currentUser = auth.currentUser;
-    const { id, descripcionPost, email, likes = [], disLikes = [] } = props.data;
+    const { id, descripcionPost, owner, likes = [], disLikes = [] } = props.data;
     const [mlike, setMlike] = useState("");
     const [mdlike, setMdlike] = useState("");
     const cantidadLike = likes.length;
@@ -37,7 +37,7 @@ function Likes(props) {
             });
     }
     function onSubmitDisLike() {
-        const yaDislikeo = disLikes.includes(currentUser?.email);
+        const yaDislikeo = disLikes.includes(currentUser.email);
         db.collection('posts')
             .doc(id)
             .update({
@@ -52,7 +52,7 @@ function Likes(props) {
     return (
         <View style={styles.card}>
             <Text style={styles.mensaje}>{descripcionPost}</Text>
-            <Text style={styles.autor}>{email}</Text>
+            <Text style={styles.autor}>{owner}</Text>
             <Text>{cantidadLike}</Text>
             <Pressable onPress={onSubmitLike}>
                 <Text>{mlike}</Text>
