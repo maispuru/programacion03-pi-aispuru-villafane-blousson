@@ -1,12 +1,15 @@
-import React from 'react';
+
 import { View, Text, Image, Pressable, StyleSheet } from 'react-native';
+import { useState, useEffect } from 'react'
+import { auth } from '../Firebase/config';
+import firebase from 'firebase';
+import { db } from '../Firebase/config';
 
 
 function Post(props) {
     const currentUser = auth.currentUser;
-    const { id, descripcionPost, owner, likes = []} = props.data;
+    const { id, likes = []} = props.post.data;
     const [mlike, setMlike] = useState("");
-    const [mdlike, setMdlike] = useState("");
     const cantidadLike = likes.length;
     useEffect(() => {
         if (likes.includes(currentUser.email)==true) {
@@ -34,7 +37,7 @@ function Post(props) {
         <Text style={styles.email}>{props.post.data.owner}</Text>
         <Text>{props.post.data.descripcion}</Text>
         <Image
-            source={{ uri: props.post.data.imagen }}
+            source={ {uri:`data:image/png;base64,${props.post.data.photo}`} }
             style={styles.image}
         />
         <Text>{cantidadLike}</Text>

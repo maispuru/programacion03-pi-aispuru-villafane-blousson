@@ -1,7 +1,9 @@
 import React, { useEffectEvent } from "react";
 import { useState, useEffect } from 'react';
-import { View, Text, Pressable, TextInput } from 'react-native';
+import { View, Text, Pressable, FlatList, StyleSheet } from 'react-native';
 import { auth } from '../Firebase/config';
+import { db } from "../Firebase/config";
+import Post from "../componentes/Post";
 
 
 function Profile(props) {
@@ -36,11 +38,11 @@ function Profile(props) {
     }
 
 return(
-    <View>
+    <View style={styles.container} >
         <Text>Mi Perfil</Text>
         <Text>Usuario: {Username}</Text>
         <Text>Email: {auth.currentUser.email}</Text>
-        <FlatList
+        <FlatList 
             data ={Posteos}
             keyExtractor={(item) => item.id.toString()}
             renderItem = {({ item }) => <Post post={item} navigation={props.navigation} />}>
@@ -52,6 +54,16 @@ return(
     </View>
 )
 
-
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+    },
+     flatlist: {
+        width: '100%',
+        flex: 1,
+    },
+});
 export default Profile
+ 

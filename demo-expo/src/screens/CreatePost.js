@@ -2,17 +2,20 @@ import React from "react";
 import { useState } from 'react'
 import { View, Text, Pressable, StyleSheet, TextInput } from 'react-native';
 import { db, auth } from '../Firebase/config';
+import Camara from "../componentes/Camara";
 
 
 
 function CreatePost(props) {
     const [descripcion, setDescripcion] = useState ('')
+    const [photoUri, setPhotoUri] = useState (null)
     
     function crearPosteo( ) {
         db.collection('posts').add({
             owner: auth.currentUser.email,
              descripcion: descripcion,
              likes: [],
+             photo: photoUri,
              createdAt: Date.now(),
              
         })
@@ -23,6 +26,11 @@ function CreatePost(props) {
     }
 
     return( 
+      <View style={styles.container}>   
+      {
+        photoUri === null ?
+        <Camara setPhotoUri={(uri) => setPhotoUri(uri)}/>
+        :
         <View style={styles.container}> 
             <Text>Nuevo Post</Text>
               <TextInput
@@ -35,6 +43,7 @@ function CreatePost(props) {
                 <Text style={styles.boton} >Publicar</Text>
             </Pressable>
         </View>
+  }  </View>  
     )
 }  
 
