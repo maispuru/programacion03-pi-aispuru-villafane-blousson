@@ -20,10 +20,37 @@ function Profile(props) {
             });
          setPosteos(posts);
        })
+
+        db.collection('users').where('email', '==', auth.currentUser.email).onSnapshot(docs => {
+             docs.forEach(doc => {
+                setUserName(doc.data().userName);
+            });
+        })
     }
 ,[])
 
+ function logout() {
+        auth.signOut()
+          .then(() => props.navigation.navigate('Login'))
+           .catch(e => console.log(e));
+    }
 
+return(
+    <View>
+        <Text>Mi Perfil</Text>
+        <Text>Usuario: {Username}</Text>
+        <Text>Email: {auth.currentUser.email}</Text>
+        <FlatList
+            data ={Posteos}
+            keyExtractor={(item) => item.id.toString()}
+            renderItem = {({ item }) => <Post post={item} navigation={props.navigation} />}>
+        </FlatList> 
+          <Pressable onPress={() => logout()}>
+                <Text>Cerrar sesión</Text>
+           </Pressable>
+
+    </View>
+)
 
 
 }
