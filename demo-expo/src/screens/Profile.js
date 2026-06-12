@@ -54,3 +54,4 @@ return(
 
 
 }
+export default Profile
