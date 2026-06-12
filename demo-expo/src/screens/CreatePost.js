@@ -13,7 +13,6 @@ function CreatePost(props) {
             owner: auth.currentUser.email,
              descripcion: descripcion,
              likes: [],
-             disLikes:[],
              createdAt: Date.now(),
              
         })
