@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from 'react';
 import { View, Text, Pressable, TextInput } from 'react-native';
-import { auth } from '../firebase/config';
+import { auth } from '../Firebase/config';
 
 function Login(props) {
     const [email, setEmail] = useState("")
@@ -26,7 +26,7 @@ function Login(props) {
     function onSubmit() {
         auth.signInWithEmailAndPassword(email, password)
         .then(response => {
-            props.navigation.navigate('Home')
+            props.navigation.navigate('Tab')
         })
         .catch(error => {
             setError(error.message)

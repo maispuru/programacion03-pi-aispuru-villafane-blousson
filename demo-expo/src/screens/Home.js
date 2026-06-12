@@ -2,7 +2,7 @@ import React from "react";
 import {useState,useEffect} from 'react'
 import { View, Text,StyleSheet, FlatList  } from 'react-native';
 import Post from "../componentes/Post";
-import { db } from "../firebase/config";
+import { db } from "../Firebase/config";
 
 
 function Home(props){
