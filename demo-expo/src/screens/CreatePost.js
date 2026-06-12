@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from 'react'
 import { View, Text, Pressable, StyleSheet, TextInput } from 'react-native';
-import { db, auth } from '../firebase/config';
+import { db, auth } from '../Firebase/config';
 
 
 
