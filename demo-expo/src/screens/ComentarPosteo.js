@@ -9,8 +9,6 @@ function ComentarPosteo(props) {
     const { id } = props.route.params;
     const [post, setPost] = useState(null);
     const [comentario, setComentario] = useState('');
-    const comentarios = post.comentarios
-    const cantidadLike = post.likes.length;
     useEffect(() => {
         db.collection('posts').doc(id).onSnapshot(doc => {
             setPost(doc.data());
@@ -31,7 +29,15 @@ function ComentarPosteo(props) {
             })
             .catch(e => console.log(e));
     }
-
+    if (post === null) {
+        return (
+            <View>
+                <Text>Cargando...</Text>
+            </View>
+        );
+    }
+    const comentarios = post.comentarios
+    const cantidadLike = post.likes.length;
     return (
         <View>
             <Text>{post.owner}</Text>
