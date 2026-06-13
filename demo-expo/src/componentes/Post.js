@@ -8,7 +8,8 @@ import { db } from '../Firebase/config';
 
 function Post(props) {
     const currentUser = auth.currentUser;
-    const { id, likes = []} = props.post.data;
+    const { likes = []} = props.post.data;
+    const postId = props.post.id;
     const [mlike, setMlike] = useState("");
     const cantidadLike = likes.length;
     useEffect(() => {
@@ -21,7 +22,7 @@ function Post(props) {
     function onSubmitLike() {
         const yaLikeo = likes.includes(currentUser.email);
         db.collection('posts')
-            .doc(id)
+            .doc(postId)
             .update({
                 likes: yaLikeo
                     ? firebase.firestore.FieldValue.arrayRemove(currentUser.email)
@@ -30,6 +31,7 @@ function Post(props) {
             .then(() => {
                 setMlike(yaLikeo ? "Like" : "Quitar Like");
             });
+        
     }
 
     return(
