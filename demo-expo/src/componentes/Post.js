@@ -35,40 +35,86 @@ function Post(props) {
     }
 
     return(
-        <View style={styles.container}>
+    <View style={styles.container}>
         <Text style={styles.email}>{props.post.data.owner}</Text>
-        <Text>{props.post.data.descripcion}</Text>
+        <Text style={styles.descripcion}>{props.post.data.descripcion}</Text>
         <Image
-            source={ {uri:`data:image/png;base64,${props.post.data.photo}`} }
+            source={{uri:`data:image/png;base64,${props.post.data.photo}`}}
             style={styles.image}
         />
-        <Text>{cantidadLike}</Text>
-        <Pressable onPress={onSubmitLike}>
-                <Text>{mlike}</Text>
-        </Pressable>
-         <Pressable onPress={() => props.navigation.navigate('ComentarPosteo', { id: props.post.id })}>
-                <Text style={styles.boton}>Comentar</Text>
-        </Pressable>
-        
-    
+        <View style={styles.likesContainer}>
+            <Text style={styles.likes}>{cantidadLike} likes</Text>
         </View>
+        <View style={styles.botonesContainer}>
+            <Pressable onPress={onSubmitLike}>
+                <Text style={styles.botonLike}>{mlike}</Text>
+            </Pressable>
+            <Pressable onPress={() => props.navigation.navigate('ComentarPosteo', { id: props.post.id })}>
+                <Text style={styles.botonComentar}>Comentar</Text>
+            </Pressable>
+        </View>
+    </View>
     )
 
 
 }
 const styles = StyleSheet.create({
     container: {
-        padding: 10,
-        borderBottomWidth: 1,
+        backgroundColor: 'white',
+        margin: 10,
+        borderWidth: 1,
+        borderColor: '#dbdbdb',
+        borderRadius: 12,
+        padding: 12,
     },
+
     email: {
         fontWeight: 'bold',
-    }, 
+        fontSize: 15,
+        color: '#262626',
+        marginBottom: 8,
+    },
+
+    descripcion: {
+        fontSize: 14,
+        color: '#262626',
+        marginBottom: 10,
+    },
+
     image: {
         height: 400,
+        width: '100%',
+        borderRadius: 10,
+        backgroundColor: '#eee',
+        marginBottom: 10,
     },
-    boton: {
-        color: 'green',
+
+    likesContainer: {
+        marginBottom: 8,
+    },
+
+    likes: {
+        fontWeight: 'bold',
+        fontSize: 14,
+        color: '#262626',
+    },
+
+    botonesContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginTop: 4,
+    },
+
+    botonLike: {
+        color: '#262626',
+        fontWeight: 'bold',
+        fontSize: 14,
+    },
+
+    botonComentar: {
+        color: '#3897f0',
+        fontWeight: 'bold',
+        fontSize: 14,
     },
 });
 

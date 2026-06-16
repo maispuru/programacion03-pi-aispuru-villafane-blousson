@@ -24,8 +24,7 @@ function Home(props){
 
     }, [])
     return(
-        <View style ={styles.container}> 
-            <Text >Home</Text> 
+        <View style ={styles.container}>  
             <View style={styles.flatlist}>
                 <FlatList
                 data ={Posteos}

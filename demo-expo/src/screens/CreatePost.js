@@ -26,38 +26,74 @@ function CreatePost(props) {
     }
 
     return( 
-      <View style={styles.container}>   
-      {
-        photoUri === null ?
-        <Camara setPhotoUri={(uri) => setPhotoUri(uri)}/>
-        :
-        <View style={styles.container}> 
-            <Text>Nuevo Post</Text>
-              <TextInput
-              style={styles.input}
-              placeholder='Escribí una descripción'
-              onChangeText={(texto)=> setDescripcion(texto)}
-              value={descripcion}
-              />
-              <Pressable onPress={() => crearPosteo()}>
-                <Text style={styles.boton} >Publicar</Text>
-            </Pressable>
-        </View>
-  }  </View>  
+    <View style={styles.container}>   
+        {
+            photoUri === null ?
+            <Camara setPhotoUri={(uri) => setPhotoUri(uri)}/>
+            :
+            <View style={styles.card}> 
+                
+                <Text style={styles.titulo}>Nuevo Post</Text>
+                <TextInput
+                    style={styles.input}
+                    placeholder='Escribí una descripción'
+                    onChangeText={(texto)=> setDescripcion(texto)}
+                    value={descripcion}
+                />
+                <Pressable style={styles.boton} onPress={() => crearPosteo()}>
+                    <Text style={styles.textoBoton}>Publicar</Text>
+                </Pressable>
+            </View>
+        }  
+    </View>  
     )
 }  
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: '#fafafa',
+        justifyContent: 'center',
+        padding: 20,
     },
+
+    card: {
+        backgroundColor: 'white',
+        borderWidth: 1,
+        borderColor: '#dbdbdb',
+        borderRadius: 12,
+        padding: 20,
+    },
+
+    titulo: {
+        fontSize: 26,
+        fontWeight: 'bold',
+        color: '#262626',
+        textAlign: 'center',
+        marginBottom: 20,
+    },
+
     input: {
         borderWidth: 1,
-        padding: 10,
-        margin: 10,
+        borderColor: '#dbdbdb',
+        backgroundColor: '#fafafa',
+        borderRadius: 8,
+        padding: 12,
+        marginBottom: 15,
+        fontSize: 14,
     },
+
     boton: {
-        color: 'green',
+        backgroundColor: '#3897f0',
+        padding: 12,
+        borderRadius: 8,
+        alignItems: 'center',
+    },
+
+    textoBoton: {
+        color: 'white',
+        fontWeight: 'bold',
+        fontSize: 15,
     },
 });
 

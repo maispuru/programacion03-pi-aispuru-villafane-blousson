@@ -38,19 +38,22 @@ function Profile(props) {
     }
 
 return(
-    <View style={styles.container} >
-        <Text>Mi Perfil</Text>
-        <Text>Usuario: {Username}</Text>
-        <Text>Email: {auth.currentUser.email}</Text>
+    <View style={styles.container}>
+        <View style={styles.cardPerfil}>
+            <Text style={styles.titulo}>Mi Perfil</Text>
+            <Text style={styles.textoPerfil}>Usuario: {Username}</Text>
+            <Text style={styles.textoPerfil}>Email: {auth.currentUser.email}</Text>
+            <Pressable style={styles.botonLogout} onPress={() => logout()}>
+                <Text style={styles.textoBoton}>Cerrar sesión</Text>
+            </Pressable>
+        </View>
+        <Text style={styles.subtitulo}>Mis posteos</Text>
         <FlatList 
-            data ={Posteos}
+            style={styles.flatlist}
+            data={Posteos}
             keyExtractor={(item) => item.id.toString()}
-            renderItem = {({ item }) => <Post post={item} navigation={props.navigation} />}>
-        </FlatList> 
-          <Pressable onPress={() => logout()}>
-                <Text>Cerrar sesión</Text>
-           </Pressable>
-
+            renderItem={({ item }) => <Post post={item} navigation={props.navigation} />}
+        />
     </View>
 )
 
@@ -59,10 +62,57 @@ return(
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: '#fafafa',
+        padding: 15,
     },
-     flatlist: {
+
+    cardPerfil: {
+        backgroundColor: 'white',
+        borderWidth: 1,
+        borderColor: '#dbdbdb',
+        borderRadius: 12,
+        padding: 18,
+        marginBottom: 18,
+    },
+
+    titulo: {
+        fontSize: 26,
+        fontWeight: 'bold',
+        color: '#262626',
+        textAlign: 'center',
+        marginBottom: 18,
+    },
+
+    textoPerfil: {
+        fontSize: 15,
+        color: '#262626',
+        marginBottom: 8,
+    },
+
+    subtitulo: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#262626',
+        marginBottom: 10,
+    },
+
+    flatlist: {
         width: '100%',
         flex: 1,
+    },
+
+    botonLogout: {
+        backgroundColor: '#3897f0',
+        padding: 12,
+        borderRadius: 8,
+        alignItems: 'center',
+        marginTop: 12,
+    },
+
+    textoBoton: {
+        color: 'white',
+        fontWeight: 'bold',
+        fontSize: 15,
     },
 });
 export default Profile

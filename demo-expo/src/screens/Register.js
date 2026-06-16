@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from 'react';
-import { View, Text, Pressable, TextInput } from 'react-native';
+import { View, Text, Pressable, TextInput, StyleSheet } from 'react-native';
 import { db, auth } from '../Firebase/config';
 
 function Register(props) {
@@ -36,32 +36,104 @@ function Register(props) {
     }
 
     return (
-        <View>
-            <Text>Registro</Text>
+    <View style={styles.container}>
+        <View style={styles.card}>
+            <Text style={styles.titulo}>Registro</Text>
             <TextInput
+                style={styles.input}
                 keyboardType='email-address'
                 placeholder='email'
                 onChangeText={text => changeEmail(text)}
-                value={email} />
+                value={email}
+            />
             <TextInput
+                style={styles.input}
                 placeholder='nombre de usuario'
                 onChangeText={text => changeName(text)}
-                value={userName} />
+                value={userName}
+            />
             <TextInput
+                style={styles.input}
                 placeholder='contraseña'
                 secureTextEntry={true}
                 onChangeText={text => changePassword(text)}
-                value={password} />
-            <Text>{error}</Text>
-            <Pressable onPress={() => onSubmit()}>
-                <Text>Registrarse</Text>
+                value={password}
+            />
+            <Text style={styles.error}>{error}</Text>
+            <Pressable style={styles.boton} onPress={() => onSubmit()}>
+                <Text style={styles.textoBoton}>Registrarse</Text>
             </Pressable>
             <Pressable onPress={() => props.navigation.navigate('Login')}>
-                <Text>Ya tengo cuenta</Text>
+                <Text style={styles.link}>Ya tengo cuenta</Text>
             </Pressable>
         </View>
+    </View>
     )
 }
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#fafafa',
+        justifyContent: 'center',
+        padding: 20,
+        marginTop: 100,
+    },
+
+    card: {
+        backgroundColor: 'white',
+        borderWidth: 1,
+        borderColor: '#dbdbdb',
+        borderRadius: 12,
+        padding: 10,
+    },
+
+    titulo: {
+        fontSize: 28,
+        fontWeight: 'bold',
+        color: '#262626',
+        textAlign: 'center',
+        marginBottom: 25,
+    },
+
+    input: {
+        borderWidth: 1,
+        borderColor: '#dbdbdb',
+        backgroundColor: '#fafafa',
+        borderRadius: 8,
+        padding: 12,
+        marginBottom: 12,
+        fontSize: 14,
+    },
+
+    error: {
+        color: 'red',
+        fontSize: 13,
+        textAlign: 'center',
+        marginBottom: 10,
+    },
+
+    boton: {
+        backgroundColor: '#3897f0',
+        padding: 12,
+        borderRadius: 8,
+        alignItems: 'center',
+        marginTop: 5,
+    },
+
+    textoBoton: {
+        color: 'white',
+        fontWeight: 'bold',
+        fontSize: 15,
+    },
+
+    link: {
+        color: '#3897f0',
+        fontWeight: 'bold',
+        textAlign: 'center',
+        marginTop: 18,
+        fontSize: 14,
+    },
+});
 
 
 
