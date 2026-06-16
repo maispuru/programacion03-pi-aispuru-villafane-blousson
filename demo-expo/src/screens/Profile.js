@@ -1,8 +1,8 @@
 import React, { useEffectEvent } from "react";
 import { useState, useEffect } from 'react';
 import { View, Text, Pressable, FlatList, StyleSheet } from 'react-native';
-import { auth } from '../Firebase/config';
-import { db } from "../Firebase/config";
+import { auth } from '../firebase/config';
+import { db } from "../firebase/config";
 import Post from "../componentes/Post";
 
 

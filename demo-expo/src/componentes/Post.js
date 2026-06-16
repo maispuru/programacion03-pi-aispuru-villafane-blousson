@@ -1,9 +1,9 @@
 
 import { View, Text, Image, Pressable, StyleSheet } from 'react-native';
 import { useState, useEffect } from 'react'
-import { auth } from '../Firebase/config';
+import { auth } from '../firebase/config';
 import firebase from 'firebase';
-import { db } from '../Firebase/config';
+import { db } from '../firebase/config';
 
 
 function Post(props) {

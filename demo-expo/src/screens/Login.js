@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from 'react';
 import { View, Text, Pressable, TextInput,StyleSheet } from 'react-native';
-import { auth } from '../Firebase/config';
+import { auth } from '../firebase/config';
 
 function Login(props) {
     const [email, setEmail] = useState("")
@@ -29,7 +29,7 @@ function Login(props) {
             props.navigation.navigate('Tab')
         })
         .catch(error => {
-            setError(error.message)
+            setError("Email o contraseña incorrectos")
         })
     }
 
