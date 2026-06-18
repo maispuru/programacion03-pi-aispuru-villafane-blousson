@@ -59,7 +59,6 @@ function ComentarPosteo(props) {
                 placeholder='Comentá acá tu post...'
                 onChangeText={(texto) => setComentario(texto)}
                 value={comentario}
-                multiline={true}
             />
             <Pressable 
                 style={styles.boton}

@@ -69,6 +69,7 @@ const styles = StyleSheet.create({
         justifyContent: 'start',
         padding: 10,
         marginTop: 100,
+        borderRadius:8,
     },
 
     card: {
@@ -76,6 +77,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#dbdbdb',
         padding: 20,
+        borderRadius:8,
     },
 
     titulo: {

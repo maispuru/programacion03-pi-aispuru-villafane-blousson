@@ -80,10 +80,10 @@ return (
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,  
+        flex: 4,  
     },
     camara:{
-        flex: 1,
+        flex: 20,
     },
    shootButton:{
         flex: 1,

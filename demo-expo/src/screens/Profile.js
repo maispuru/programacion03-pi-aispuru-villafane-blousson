@@ -1,4 +1,3 @@
-import React, { useEffectEvent } from "react";
 import { useState, useEffect } from 'react';
 import { View, Text, Pressable, FlatList, StyleSheet } from 'react-native';
 import { auth } from '../firebase/config';

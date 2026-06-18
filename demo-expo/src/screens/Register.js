@@ -74,17 +74,21 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fafafa',
-        justifyContent: 'center',
-        padding: 20,
+        justifyContent: 'start',
+        padding: 10,
         marginTop: 100,
     },
 
     card: {
         backgroundColor: 'white',
         borderWidth: 1,
-        borderColor: '#dbdbdb',
-        borderRadius: 12,
-        padding: 10,
+        borderColor: '#dcdcdc',
+        borderRadius: 18,
+        padding: 16,
+        shadowColor: '#000',
+        shadowOpacity: 0.08,
+        shadowRadius: 6,
+        elevation: 3,
     },
 
     titulo: {
