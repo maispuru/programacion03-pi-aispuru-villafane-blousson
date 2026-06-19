@@ -87,6 +87,10 @@ const styles = StyleSheet.create({
     },
    shootButton:{
         flex: 1,
+   },
+   preview:{
+    width:300,
+    height:300
    }
 });
 
