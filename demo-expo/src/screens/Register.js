@@ -20,6 +20,10 @@ function Register(props) {
     }
 
     function onSubmit() {
+        if (userName.length === 0) {
+            setError("El nombre de usuario no puede estar vacío")
+            return
+        }
         auth.createUserWithEmailAndPassword(email, password)
         .then(response => {
             return db.collection('users').add({
