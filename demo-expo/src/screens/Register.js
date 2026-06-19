@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from 'react';
 import { View, Text, Pressable, TextInput, StyleSheet } from 'react-native';
-import { db, auth } from '../firebase/config';
+import { db, auth } from '../Firebase/config';
 
 function Register(props) {
     const [email, setEmail] = useState("")
